@@ -115,12 +115,6 @@ if __name__ == '__main__':
 
 
 
-# Behavior
-'''The following are mandatory behaviors that your LED board needs to perform:
-1. A display of lights (of your choosing) that indicates ”powering up”. This should be performed when the user does the very first keystroke of a session.
-2. Flashing of all lights in synchrony when the user enters the wrong password during login.
-3. Twinkling the lights (in any sequence you choose) when the user successfully logs in.
-4. A fourth type of light display (of your choosing) that indicates ”powering down”. This should be performed immediately after the user logs out.
-5. Turn one user-specified LED on for a user-specified number of seconds, where information about the particular LED and duration are entered via the keypad.'''
+
 
 
