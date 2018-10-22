@@ -1,0 +1,17 @@
+# A text file containing pre-defined rules
+# START STATE - END STATE - SIGNAL - FIRE ACTION
+
+S-Init S-Read 0123456789*# A1
+S-Read S-Read 0123456789 A2
+S-Read S-Verify * A3
+S-Read S-Init # A4
+S-Verify S-Init 0 A4
+S-Verify S-Active 1 A5
+S-Active S-Read-2 * A1
+S-Active S-Active 0123456789# A6
+S-Read-2 S-Read-2 0123456789 A2
+S-Read-2 S-Read-3 * A7
+S-Read-2 S-Active # A6
+S-Read-3 S-Read-3 0123456789 A2
+S-Read-3 S-Active # A6
+S-Read-3 S-Active * A8
