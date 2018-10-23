@@ -2,11 +2,11 @@ import RPi.GPIO as GPIO
 from time import sleep
 from datetime import datetime, timedelta
 
+
 class LedBoard:
 
-
-    def __init__(self):
-        self.pins = [18, 23, 24]
+    def __init__(self, pins):
+        self.pins = pins
         self.pin_led_states = [[1, 0, -1],
                                [0, 1, -1],
                                [-1, 1, 0],
@@ -26,7 +26,8 @@ class LedBoard:
 
     # runs every time the system is powering up. Blink half of the lights and switches a couple of times.
     # Activates when keypad receives the very first press
-    def start_up(self, k):
+    def start_up(self, k=3):
+
         end_time = datetime.now() + timedelta(seconds=k)
         while datetime.now() < end_time:
             for i in range(0, 3):
@@ -53,16 +54,22 @@ class LedBoard:
 
         
     # flashes all the leds on and off for k seconds
-    def flash_all_leds(self, k):
-        end_time = datetime.now() + timedelta(seconds=k)
-        while datetime.now() < end_time:
-            for i in range(0, 6):
-                self.light_led(i, 0.02)
+    def flash_all_leds(self, k=0.5):
+        j = 3
+        while j >= 0:
+            end_time = datetime.now() + timedelta(seconds=k)
+            while datetime.now() < end_time:
+                for i in range(0, 6):
+                    self.light_led(i, 0.002)
+            sleep(k)
+            j -= 1
+
         self.reset()
 
 
     # twinkles all leds in a sequence on and off for k seconds
-    def twinkle_all_leds(self, k):
+    def twinkle_all_leds(self, k=3):
+
         end_time = datetime.now() + timedelta(seconds=k)
         while datetime.now() < end_time:
             for i in range(0, 6):
@@ -70,7 +77,8 @@ class LedBoard:
         self.reset()
 
     # runs every time the system is shutting down. Lights up all of the leds and then shuts them down 1-by-1
-    def shut_down(self, k):
+    def shut_down(self, k=0.5):
+
         j = 6
         while j>= 0:
             end_time = datetime.now() + timedelta(seconds=k)
@@ -89,18 +97,24 @@ class LedBoard:
 def main():
     l = LedBoard()
     print("START UP")
-    l.start_up(3)
+    sleep(1)
+    l.start_up()
     print("FLASHING ALL LEDS")
-    l.flash_all_leds(3)
+    sleep(1)
+    l.flash_all_leds()
     print("TWINKLE ALL LEDS")
-    l.twinkle_all_leds(3)
+    sleep(1)
+    l.twinkle_all_leds()
     print("SHUT DOWN")
-    l.shut_down(0.5)
+    sleep(1)
+    l.shut_down()
+
 
 
 
 if __name__ == '__main__':
     main()
+
 
 
 
