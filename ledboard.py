@@ -27,6 +27,7 @@ class LedBoard:
     # runs every time the system is powering up. Blink half of the lights and switches a couple of times.
     # Activates when keypad receives the very first press
     def start_up(self, k=3):
+
         end_time = datetime.now() + timedelta(seconds=k)
         while datetime.now() < end_time:
             for i in range(0, 3):
@@ -62,11 +63,13 @@ class LedBoard:
                     self.light_led(i, 0.002)
             sleep(k)
             j -= 1
+
         self.reset()
 
 
     # twinkles all leds in a sequence on and off for k seconds
     def twinkle_all_leds(self, k=3):
+
         end_time = datetime.now() + timedelta(seconds=k)
         while datetime.now() < end_time:
             for i in range(0, 6):
@@ -75,6 +78,7 @@ class LedBoard:
 
     # runs every time the system is shutting down. Lights up all of the leds and then shuts them down 1-by-1
     def shut_down(self, k=0.5):
+
         j = 6
         while j>= 0:
             end_time = datetime.now() + timedelta(seconds=k)
@@ -107,6 +111,7 @@ def main():
 
 
 
+
 if __name__ == '__main__':
     main()
 
@@ -124,5 +129,12 @@ if __name__ == '__main__':
 
 
 
+# Behavior
+'''The following are mandatory behaviors that your LED board needs to perform:
+1. A display of lights (of your choosing) that indicates ”powering up”. This should be performed when the user does the very first keystroke of a session.
+2. Flashing of all lights in synchrony when the user enters the wrong password during login.
+3. Twinkling the lights (in any sequence you choose) when the user successfully logs in.
+4. A fourth type of light display (of your choosing) that indicates ”powering down”. This should be performed immediately after the user logs out.
+5. Turn one user-specified LED on for a user-specified number of seconds, where information about the particular LED and duration are entered via the keypad.'''
 
 
