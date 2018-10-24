@@ -36,7 +36,8 @@ class Agent:
             self.fsm.current_state = "S-Active"
 
         def refresh_agent(args = None):
-            pass
+            self.cached = ""
+            self.attempted_password = ""
 
         def cache_first_pw(args = None):
             self.cached = self.attempted_password
@@ -50,6 +51,18 @@ class Agent:
                 file = open("password", "w")
                 file.write(self.password)
                 file.close()
+                
+        def store_pin(pin_num):
+            #pins = ["1","2","3","4","5","6"]
+            #self.pin_number = pins[pin_num]
+
+        def light_led(seconds):
+            # light self.pin_number for 'seconds' seconds
+            pass
+
+        def shut_down(args = None):
+            # shut down-lights
+            pass
          
         # dict with all functions
         self.actions = {
@@ -60,7 +73,10 @@ class Agent:
             "A5": activate_agent,
             "A6": refresh_agent,
             "A7": cache_first_pw,
-            "A8": compare_pw
+            "A8": compare_pw,
+            "A9": store_pin,
+            "A10": light_led,
+            "A11": shut_down
         }
  
     def update(self, signal):
