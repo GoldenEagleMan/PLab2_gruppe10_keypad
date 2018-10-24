@@ -8,8 +8,8 @@ S-Read S-Init # A4
 S-Verify S-Init 0 A4
 S-Verify S-Active 1 A5
 S-Active S-Read-2 * A1
-S-Active S-Active 6789 A6
-S-Active S-Sec 012345 A9
+S-Active S-Active 0789 A6
+S-Active S-Sec 123456 A9
 S-Active S-Init # A11
 S-Sec S-Active 0*# A6
 S-Sec S-Active 123456789 A10
