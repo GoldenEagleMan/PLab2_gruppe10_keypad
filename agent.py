@@ -5,9 +5,9 @@ from ledboard import *
 
 class Agent:
 
-    def __init__(self, fsm, file_name="password"):
-        self.keypad = Keypad([], [])  # pin raspberrypi
-        self.led_board = LedBoard([18, 23, 24])  # pins ledboard
+    def __init__(self, fsm, file_name="password", rows, cols, ledpins):
+        self.keypad = Keypad(rows, cols)  # pin raspberrypi
+        self.led_board = LedBoard(ledpins)  # pins ledboard
         self.fsm = fsm
         self.attempted_password = ""
         self.cached = ""
